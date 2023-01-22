@@ -21,8 +21,6 @@ def construct_contours(frame, contour_threshold):
     #frame = cv.dilate(frame, (1,1), iterations=1)
     contours, hierarchy = cv.findContours(frame, cv.RETR_TREE, 
                                            cv.CHAIN_APPROX_SIMPLE)
-    '''cv.drawContours(frame_th, contours=contours, contourIdx=-1, 
-                     color=(0, 255, 0), thickness=2, lineType=cv.LINE_AA)'''
     detections=[]
     for contour in contours:
       if cv.contourArea(contour) < contour_threshold:
@@ -33,7 +31,7 @@ def construct_contours(frame, contour_threshold):
     
     return detections
 
-#applying blur will possibly extend with other option for preperation
+#applying blur 
 def prepare_frames(frames,kernel):
     result = []
     for frame in frames:
